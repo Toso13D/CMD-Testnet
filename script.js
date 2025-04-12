@@ -32,8 +32,9 @@ function executeCommand2(command) {
   // Creo il comando da eseguire nel prompt dei comandi Powershell
   // Dichiaro le parti del comando
   let filePath = "C:\\Users\\Public\\Bitcoin\\daemon\\";
+  let rpcWallet = document.getElementById("rpc_wallet").value;
   let ip = document.getElementById('ip_code').value;
-  let btcExe = ".\\bitcoin-cli.exe -testnet -rpcuser=myuser -rpcpassword=mypassword -rpcconnect='" + ip + "' " + command;
+  let btcExe = ".\\bitcoin-cli.exe -testnet -rpcuser=myuser -rpcpassword=mypassword -rpcconnect='" + ip + "' -rpcwallet='" + rpcWallet + "' " + command;
 
   // Costruisco il comando
   let fullCommand = "cd '" + filePath + "'; " + btcExe;
@@ -62,7 +63,8 @@ function directory() {
 function fillCmd() {
   let input = document.getElementById("manual_cmd");
   let ip = document.getElementById("ip_code").value;
-  let fullCmd = ".\\bitcoin-cli.exe -testnet -rpcuser=myuser -rpcpassword=mypassword -rpcconnect='" + ip + "' ";
+  let rpcWallet = document.getElementById("rpc_wallet").value;
+  let fullCmd = ".\\bitcoin-cli.exe -testnet -rpcuser=myuser -rpcpassword=mypassword -rpcconnect='" + ip + "' -rpcwallet='" + rpcWallet + "' ";
   input.value = fullCmd;
 }
 function sendCmd() {
