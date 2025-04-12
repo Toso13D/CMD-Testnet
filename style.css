@@ -1,0 +1,211 @@
+root {
+  --black: #000;
+  --white: #fff;
+  --periwinkle: #b7c0ea;
+  --russian-violet: #492664;
+  --saffron: #f1c834;
+  --blue-munsell: #468494;
+  --myrtle-green: #42787d;
+}
+body {
+  margin: 0;
+  background-color: #b7c0ea;
+}
+
+.content {
+  width: 80%;
+  margin: auto;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.section {
+  border-bottom: 2px solid black;
+  text-align: center;
+  padding: 20px 5px;
+}
+
+
+/* -------- S1 - TITLE -------- */
+.s1-header h1 {
+  margin: 0;
+}
+
+/* -------- S2 - IP -------- */
+.s2-ip label,
+.s3-cmd label {
+  padding: 4px 8px;
+}
+.s2-ip input,
+.s3-cmd input {
+  padding: 4px 8px;
+  background-color: #fff;
+  width: 150px;
+  border: none;
+  border-radius: 5px;
+}
+.s2-ip #wallet_id {
+  width: 300px;
+}
+
+
+.input-label {
+  border: 3px solid #f1c834;
+  border-radius: 8px;
+  display: inline-block;
+  overflow: hidden;
+  background-color: #f1c834;
+}
+
+
+/* -------- S3 - CARDS -------- */
+/*.cardholder {
+  border: 5px solid purple;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+.card {
+  border: 3px solid red;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-template-rows: 60% 40%;
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+}
+.card .card-title {
+  border: 2px solid black;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  margin: 0;
+}
+.card .card-description {
+  border: 2px solid black;
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
+  margin: 0;
+}
+.card .card-submit {
+  border: 2px solid black;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  margin: 0;
+}*/
+
+/* -------- S3 - CARDS -------- */
+.cardholder {
+  /* border: 5px solid purple; */
+  display: -ms-flexbox; 
+  display: flex; 
+  -ms-flex-pack: justify; 
+  justify-content: space-between;
+  -ms-flex-wrap: wrap; 
+  flex-wrap: wrap; 
+  padding: 20px;
+}
+
+.cardholder .card {
+  margin: 10px; 
+}
+
+.card {
+  border: 3px solid #42787d;
+  border-radius: 15px;
+  background-color: #f1c834;
+  display: -ms-flexbox; 
+  display: flex; 
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+}
+.card * {
+  box-sizing: border-box;
+}
+
+/* Contenitore titolo e pulsante */
+.card .left-side {
+  display: -ms-flexbox; 
+  display: flex; 
+  -ms-flex-direction: column; 
+  flex-direction: column; 
+  -ms-flex: 0 0 40%; 
+  flex: 0 0 40%;
+}
+
+/* Contenitore descrizione */
+.card .right-side {
+  -ms-flex: 0 0 60%; 
+  flex: 0 0 60%; 
+  align-items: center;
+}
+
+.card .card-title {
+  /* border: 2px solid aqua; */
+  -ms-flex: 0 0 60%; 
+  flex: 0 0 60%; 
+  overflow: auto;
+  /* padding: 20px 10px; */
+  margin: 0;
+  background-color: #42787d;
+  color: #fff;
+}
+
+.card .card-submit {
+  border: none;
+  -ms-flex: 0 0 40%; 
+  flex: 0 0 40%; 
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  transition: .3s;
+}
+.card .card-submit:hover {
+  background-color: #ddd;
+  transition: .3s;
+}
+
+.card .card-description {
+  /* border: 2px solid black; */
+  height: max-content;
+  margin: 0;
+  padding: 10px;
+}
+
+
+.s3-cmd .input-3 input {
+  min-width: 350px;
+}
+.s3-cmd .input-4 input {
+  min-width: 500px;
+}
+.s3-cmd .input-3 button,
+.s3-cmd .input-4 button{
+  background-color: #f1c834;
+  border: none;
+  border-radius: 5px;
+  padding: 4px 8px;
+  transition: .3s;
+}
+.s3-cmd .input-3 button:hover,
+.s3-cmd .input-4 button:hover{
+  background-color: #e0bb33;
+  transition: .3s;
+}
+
+#output {
+  padding: 10px;
+  width: 75%;
+  min-height: 250px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 10px;
+  overflow-y: auto;
+}
+#output:hover {
+  /* outline-style: solid;
+  outline-width: 1px; */
+  border: 2px solid #fff;
+  border-radius: 10px;
+}

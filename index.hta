@@ -1,0 +1,197 @@
+<html>
+  <head>
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <hta:application
+        applicationname="MyApp"
+        border="thin"
+        borderstyle="normal"
+        caption="yes"
+        showintaskbar="yes"
+        singleinstance="yes"
+        sysmenu="yes"
+        windowstate="normal"
+        icon="currency.ico"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js"></script>
+    <title>Criptovalute</title>
+  </head>
+  <body>
+    <div class="content">
+      <!-- Sezione 1 - Titolo -->
+      <div class="s1-header section">
+        <h1>Invio cmd rete Bitcoin</h1>
+      </div>
+
+      <!-- Sezione 2 - IP -->
+      <div class="s2-ip section">
+        <div class="input-1 input-label">
+          <label for="ip_code">Ip:</label>
+          <input type="text" name="ip_code" id="ip_code" placeholder="000.000.000.000:00000">
+        </div>
+        <div class="input-2 input-label">
+          <label for="wallet_id">Wallet:</label>
+          <input type="text" name="wallet_id" id="wallet_id" placeholder="1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa">
+        </div>
+      </div>
+      
+      <!-- Sezione 3 - Cards -->
+      <div class="s3-cmd section">
+        <h2>Comandi</h2>
+        <div class="cardholder">
+
+          <div class="card">
+            <div class="left-side">
+              <div class="card-title">
+                <h5>GETBALANCE</h5>
+              </div>
+              <button class="card-submit" onclick="executeCommand('.\\bitcoin-cli.exe -testnet -rpcuser=myuser -rpcpassword=mypassword -rpcconnect=\'192.168.0.111\' getbalance')">Invio</button>
+            </div>
+            <div class="right-side">
+              <p class="card-description">Mostra la quantita' di Bitcoin a disposizione nel proprio Wallet; &nbsp Metodo funzione 1</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="left-side">
+              <div class="card-title">
+                <h5>DIR</h5>
+              </div>
+              <button class="card-submit" onclick="executeCommand('dir')">Invio</button>
+            </div>
+            <div class="right-side">
+              <p class="card-description">Mostra i possibili collegamenti dalla cartella attuale; &nbsp Metodo funzione 1 (comando semplice)</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="left-side">
+              <div class="card-title">
+                <h5>GET NEW ADDRESS</h5>
+              </div>
+              <button class="card-submit" onclick="executeCommand2('getnewaddress')">Invio</button>
+            </div>
+            <div class="right-side">
+              <p class="card-description">Metodo 2</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="left-side">
+              <div class="card-title">
+                <h5>GETBALANCE</h5>
+              </div>
+              <button class="card-submit" onclick="executeCommand2('getbalance')">Invio</button>
+            </div>
+            <div class="right-side">
+              <p class="card-description">Metodo 2 da verificare (anche il primo)</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="left-side">
+              <div class="card-title">
+                <h5>GETBALANCES</h5>
+              </div>
+              <button class="card-submit" onclick="executeCommand2('getbalances')">Invio</button>
+            </div>
+            <div class="right-side">
+              <p class="card-description">Metodo 2 (balanceSSSS)</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="left-side">
+              <div class="card-title">
+                <h5>SEND TO ADDRESS</h5>
+              </div>
+              <button class="card-submit" onclick="executeCommand2('sendtoaddress')">Invio</button>
+            </div>
+            <div class="right-side">
+              <p class="card-description">Metodo 2</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="left-side">
+              <div class="card-title">
+                <h5>LIST UNSPENT</h5>
+              </div>
+              <button class="card-submit" onclick="executeCommand2('listunspent')">Invio</button>
+            </div>
+            <div class="right-side">
+              <p class="card-description">Metodo 2</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="left-side">
+              <div class="card-title">
+                <h5>CREATE RAW TRANSACTION</h5>
+              </div>
+              <button class="card-submit" onclick="executeCommand2('createrawtransaction')">Invio</button>
+            </div>
+            <div class="right-side">
+              <p class="card-description">Metodo 2</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="left-side">
+              <div class="card-title">
+                <h5>SIGN RAW TRANSACITON</h5>
+              </div>
+              <button class="card-submit" onclick="executeCommand2('signrawtransaction')">Invio</button>
+            </div>
+            <div class="right-side">
+              <p class="card-description">Metodo 2</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="left-side">
+              <div class="card-title">
+                <h5>SEND RAW TRANSACTION</h5>
+              </div>
+              <button class="card-submit" onclick="executeCommand2('sendrawtransaction')">Invio</button>
+            </div>
+            <div class="right-side">
+              <p class="card-description">Metodo 2</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="left-side">
+              <div class="card-title">
+                <h5>GET RAW TRANSACTION</h5>
+              </div>
+              <button class="card-submit" onclick="executeCommand2('getrawtransaction')">Invio</button>
+            </div>
+            <div class="right-side">
+              <p class="card-description">Metodo 2</p>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="input-3 input-label">
+          <label for="directory">Directory:</label>
+          <input type="text" name="directory" id="directory" placeholder="Inserisci la cartella di destinazione">
+          <button class="card-submit" onclick="directory()">Daemon</button>
+        </div>
+        <br>
+        <div class="input-4 input-label">
+          <label for="manual_cmd">Comando:</label>
+          <input type="text" name="manual_cmd" id="manual_cmd" placeholder="Inserisci un comando">
+          <button class="card-submit" onclick="fillCmd()">BTC</button>
+          <button class="card-submit" onclick="sendCmd()">Invio</button>
+        </div>        
+      </div>
+
+      <!-- Sezione 4 - Output -->
+      <div class="s4-output section">
+        <h2>Output:</h2>
+        <textarea id="output" readonly></textarea>
+      </div>
+    </div>
+  </body>
+</html>
