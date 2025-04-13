@@ -19,7 +19,7 @@
   <body>
     <div class="content">
       <!-- Sezione 1 - Titolo -->
-      <div class="s1-header section">
+      <div class="section" id="s1-header">
         <h1>Invio cmd rete Bitcoin</h1>
       </div>
 
@@ -36,7 +36,7 @@
         <br>
         <div class="input-w input-label">
           <label for="rpc_wallet">RPC Wallet:</label>
-          <input type="text" name="rpc_wallet" id="rpc_wallet" placeholder="nome wallet">
+          <input type="text" name="rpc_wallet" id="rpc_wallet" placeholder="Nome Wallet">
         </div>
       </div>
       
@@ -45,18 +45,7 @@
         <h2>Comandi</h2>
         <div class="cardholder">
 
-          <div class="card">
-            <div class="left-side">
-              <div class="card-title">
-                <h5>GETBALANCE</h5>
-              </div>
-              <button class="card-submit" onclick="executeCommand('.\\bitcoin-cli.exe -testnet -rpcuser=myuser -rpcpassword=mypassword -rpcconnect=\'192.168.0.111\' getbalance')">Invio</button>
-            </div>
-            <div class="right-side">
-              <p class="card-description">Mostra la quantita' di Bitcoin a disposizione nel proprio Wallet; &nbsp Metodo funzione 1</p>
-            </div>
-          </div>
-
+          <!-- dir -->
           <div class="card">
             <div class="left-side">
               <div class="card-title">
@@ -65,130 +54,166 @@
               <button class="card-submit" onclick="executeCommand('dir')">Invio</button>
             </div>
             <div class="right-side">
-              <p class="card-description">Mostra i possibili collegamenti dalla cartella attuale; &nbsp Metodo funzione 1 (comando semplice)</p>
+              <p class="card-description">Mostra i possibili collegamenti dalla cartella attuale</p>
             </div>
           </div>
 
+          <!-- getbalance -->
           <div class="card">
             <div class="left-side">
               <div class="card-title">
-                <h5>GET NEW ADDRESS</h5>
+                <h5>GET BALANCE</h5>
               </div>
-              <button class="card-submit" onclick="executeCommand2('getnewaddress')">Invio</button>
+              <button class="card-submit" onclick="executeCommandRpc('getbalance')">Invio</button>
             </div>
             <div class="right-side">
-              <p class="card-description">Metodo 2</p>
+              <p class="card-description">Mostra quanti fBTC hai nel wallet</p>
             </div>
           </div>
 
-          <div class="card">
-            <div class="left-side">
-              <div class="card-title">
-                <h5>GETBALANCE</h5>
-              </div>
-              <button class="card-submit" onclick="executeCommand2('getbalance')">Invio</button>
-            </div>
-            <div class="right-side">
-              <p class="card-description">Metodo 2 da verificare (anche il primo)</p>
-            </div>
-          </div>
-
+          <!-- getbalances -->
           <div class="card">
             <div class="left-side">
               <div class="card-title">
                 <h5>GETBALANCES</h5>
               </div>
-              <button class="card-submit" onclick="executeCommand2('getbalances')">Invio</button>
+              <button class="card-submit" onclick="executeCommandRpc('getbalances')">Invio</button>
             </div>
             <div class="right-side">
-              <p class="card-description">Metodo 2 (balanceSSSS)</p>
+              <p class="card-description">Mostra quanti fBTC hai nel wallet e altri dettagli</p>
             </div>
           </div>
 
+          <!-- getnewaddress -->
+          <div class="card">
+            <div class="left-side">
+              <div class="card-title">
+                <h5>GET NEW ADDRESS</h5>
+              </div>
+              <button class="card-submit" onclick="executeCommandRpc('getnewaddress')">Invio</button>
+            </div>
+            <div class="right-side">
+              <p class="card-description">Crea un nuovo indirizzo collegato tuo Wallet</p>
+            </div>
+          </div>
+
+          <!-- sendtoaddress -->
           <div class="card">
             <div class="left-side">
               <div class="card-title">
                 <h5>SEND TO ADDRESS</h5>
               </div>
-              <button class="card-submit" onclick="executeCommand2('sendtoaddress')">Invio</button>
+              <button class="card-submit" onclick="executeCommandRpc('sendtoaddress')">Invio</button>
             </div>
             <div class="right-side">
-              <p class="card-description">Metodo 2</p>
+              <p class="card-description">!!!!!!!!!!!!</p>
             </div>
           </div>
 
+          <!-- listunspent -->
           <div class="card">
             <div class="left-side">
               <div class="card-title">
                 <h5>LIST UNSPENT</h5>
               </div>
-              <button class="card-submit" onclick="executeCommand2('listunspent')">Invio</button>
+              <button class="card-submit" onclick="executeCommandRpc('listunspent')">Invio</button>
             </div>
             <div class="right-side">
-              <p class="card-description">Metodo 2</p>
+              <p class="card-description">Elenca una serie di transazioni non spese del proprio Wallet</p>
             </div>
           </div>
 
+          <!-- createrawtransaction -->
           <div class="card">
             <div class="left-side">
               <div class="card-title">
                 <h5>CREATE RAW TRANSACTION</h5>
               </div>
-              <button class="card-submit" onclick="executeCommand2('createrawtransaction')">Invio</button>
+              <button class="card-submit" onclick="executeCommandRpc('createrawtransaction')">Invio</button>
             </div>
             <div class="right-side">
-              <p class="card-description">Metodo 2</p>
+              <p class="card-description">SERVE UNA TRANSAZIONE E I DATI!!!!!!!!!!!!</p>
             </div>
           </div>
 
+          <!-- signrawtransaction -->
           <div class="card">
             <div class="left-side">
               <div class="card-title">
                 <h5>SIGN RAW TRANSACITON</h5>
               </div>
-              <button class="card-submit" onclick="executeCommand2('signrawtransaction')">Invio</button>
+              <button class="card-submit" onclick="executeCommandRpc('signrawtransaction')">Invio</button>
             </div>
             <div class="right-side">
-              <p class="card-description">Metodo 2</p>
+              <p class="card-description">SERVE IL CODICE DELLA TRANSAZIONE CREATA!!!!!!!!!!!!</p>
             </div>
           </div>
 
+          <!-- sendrawtransaciton -->
           <div class="card">
             <div class="left-side">
               <div class="card-title">
                 <h5>SEND RAW TRANSACTION</h5>
               </div>
-              <button class="card-submit" onclick="executeCommand2('sendrawtransaction')">Invio</button>
+              <button class="card-submit" onclick="executeCommandRpc('sendrawtransaction')">Invio</button>
             </div>
             <div class="right-side">
-              <p class="card-description">Metodo 2</p>
+              <p class="card-description">SERVE IL CODICE DATO DALLA FIRMA!!!!!!!!!!!!</p>
+            </div>
+          </div>
+
+          <!-- gettransaction -->
+          <div class="card">
+            <div class="left-side">
+              <div class="card-title">
+                <h5>GET RAW TRANSACTION</h5>
+              </div>
+              <button class="card-submit" onclick="executeCommandRpc('gettransaction')">Invio</button>
+            </div>
+            <div class="right-side">
+              <p class="card-description">SERVE IL CODICE DELLA TRANSAZIONE!!!!!!!!!!!!</p>
+            </div>
+          </div>
+
+          <!-- decoderawtransaction -->
+          <div class="card">
+            <div class="left-side">
+              <div class="card-title">
+                <h5>GET RAW TRANSACTION</h5>
+              </div>
+              <button class="card-submit" onclick="executeCommandRpc('decoderawtransaction')">Invio</button>
+            </div>
+            <div class="right-side">
+              <p class="card-description">SERVE IL CONTENUTO DELLA TRANSAZIONE!!!!!!!!!!!!</p>
             </div>
           </div>
 
           <div class="card">
             <div class="left-side">
               <div class="card-title">
-                <h5>GET RAW TRANSACTION</h5>
+                <h5>X</h5>
               </div>
-              <button class="card-submit" onclick="executeCommand2('getrawtransaction')">Invio</button>
+              <button class="card-submit" onclick="executeCommandRpc('#')">Invio</button>
             </div>
             <div class="right-side">
-              <p class="card-description">Metodo 2</p>
+              <p class="card-description">X</p>
             </div>
           </div>
+
         </div>
         <br>
+        <h3>Inserisci un comando</h3>
         <div class="input-3 input-label">
           <label for="directory">Directory:</label>
           <input type="text" name="directory" id="directory" placeholder="Inserisci la cartella di destinazione">
-          <button class="card-submit" onclick="directory()">Daemon</button>
+          <button class="card-submit button" onclick="directory()">Daemon</button>
         </div>
         <br>
         <div class="input-4 input-label">
           <label for="manual_cmd">Comando:</label>
           <input type="text" name="manual_cmd" id="manual_cmd" placeholder="Inserisci un comando">
-          <button class="card-submit" onclick="fillCmd()">BTC</button>
-          <button class="card-submit" onclick="sendCmd()">Invio</button>
+          <button class="card-submit button" onclick="fillCmd()">BTC</button>
+          <button class="card-submit button" onclick="sendCmd()">Invio</button>
         </div>        
       </div>
 
@@ -196,6 +221,26 @@
       <div class="s4-output section">
         <h2>Output:</h2>
         <textarea id="output" readonly></textarea>
+        <br>
+        <div id="clearDiv">
+          <button class="button" id="clear" onclick="clearOutput()"><b>Clear</b></button>
+        </div>
+      </div>
+      
+      <!-- Sezione 5 - Info -->
+      <div class="s5-info section">
+        <div>
+          <h2>Link vari</h2>
+          <p>Li apre in Internet Explorer ToT &nbsp O_o &nbspCopia il collegamento e incollalo nel browser a tua scelta</p>
+          <ul>
+            <li><a href="https://github.com/ipfs/ipfs-desktop/releases" target="_blank">IPFS Download</a></li>
+            <li><a href="https://www.convertstring.com/EncodeDecode/HexEncode" target="_blank">HEX Encoder/Decoder</a></li>
+            <li><a href="https://blockstream.info/testnet/" target="_blank">Testnet Explorer 1</a></li>
+            <li><a href="https://blockexplorer.one/" target="_blank">Testnet Explorer 2</a></li>
+            <li><a href="https://developer.bitcoin.org/reference/rpc/index.html" target="_blank">RPC API Reference</a></li>
+            <li><a href="#s1-header">Torna su</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </body>

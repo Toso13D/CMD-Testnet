@@ -1,20 +1,17 @@
-// Dichiaro la funzione per eseguire il comando
+// Funzione comando senza rpc...=
 function executeCommand(command) {
-  var WshShell = new ActiveXObject("WScript.Shell");
+  let WshShell = new ActiveXObject("WScript.Shell");
 
   // Creo il comando da eseguire nel prompt dei comandi Powershell
-  // Dichiaro la cartella di lavoro
-  var filePath = "C:\\Users\\Public\\Bitcoin\\daemon\\";
-
+  let filePath = "C:\\Users\\Public\\Bitcoin\\daemon\\";
   // Costruisco il comando
-  var fullCommand = "cd '" + filePath + "'; " + command;
-  var commandExe = 'powershell -Command "' + fullCommand + '"';
+  let commandExe = "powershell -Command \"cd '" + filePath + "'; " + btcExe + '"'; 
   
-  var output = WshShell.Exec(commandExe);
-
-  // Leggo l'output del comando
-  var result = "";
-  var interval = setInterval(function() {
+  // Dichiaro e leggo l'output del comando
+  let output = WshShell.Exec(commandExe);
+  
+  let result = "";
+  let interval = setInterval(function() {
     if (output.status == 1) { // Se il comando è terminato
       clearInterval(interval); // Interrompo l'intervallo
       while (!output.StdOut.AtEndOfStream) { // Leggo l'output
@@ -26,32 +23,30 @@ function executeCommand(command) {
   }, 100); // Controllo ogni 100ms
 }
 
-function executeCommand2(command) {
+// Funzione comando con rpc...=
+function executeCommandRpc(command) {
   let WshShell = new ActiveXObject("WScript.Shell");
 
   // Creo il comando da eseguire nel prompt dei comandi Powershell
-  // Dichiaro le parti del comando
-  let filePath = "C:\\Users\\Public\\Bitcoin\\daemon\\";
-  let rpcWallet = document.getElementById("rpc_wallet").value;
   let ip = document.getElementById('ip_code').value;
+  let rpcWallet = document.getElementById("rpc_wallet").value;
+  let filePath = "C:\\Users\\Public\\Bitcoin\\daemon\\";
   let btcExe = ".\\bitcoin-cli.exe -testnet -rpcuser=myuser -rpcpassword=mypassword -rpcconnect='" + ip + "' -rpcwallet='" + rpcWallet + "' " + command;
-
   // Costruisco il comando
-  let fullCommand = "cd '" + filePath + "'; " + btcExe;
-  let commandExe = 'powershell -Command "' + fullCommand + '"';
+  let commandExe = "powershell -Command \"cd '" + filePath + "'; " + btcExe + '"'; 
 
+  // Dichiaro e leggo l'output del comando
   let output = WshShell.Exec(commandExe);
 
-  // Leggo l'output del comando
   let result = "";
   let interval = setInterval(function() {
     if (output.status == 1) { // Se il comando è terminato
-      clearInterval(interval); // Interrompo l'intervallo
-      while (!output.StdOut.AtEndOfStream) { // Leggo l'output
-        result += output.StdOut.ReadLine() + "\n"; // Aggiungo a result
-      }
-      // Mostro l'output in una textarea
-      document.getElementById("output").value = result;
+        clearInterval(interval); // Interrompo l'intervallo
+        while (!output.StdOut.AtEndOfStream) { // Leggo l'output
+          result += output.StdOut.ReadLine() + "\n"; // Aggiungo a result
+        }
+        // Mostro l'output in una textarea
+        document.getElementById("output").value = result;
       }
       }, 100); // Controllo ogni 100ms
 }
@@ -67,6 +62,7 @@ function fillCmd() {
   let fullCmd = ".\\bitcoin-cli.exe -testnet -rpcuser=myuser -rpcpassword=mypassword -rpcconnect='" + ip + "' -rpcwallet='" + rpcWallet + "' ";
   input.value = fullCmd;
 }
+
 function sendCmd() {
   let WshShell = new ActiveXObject("WScript.Shell");
   
@@ -80,11 +76,15 @@ function sendCmd() {
   let result = "";
   let interval = setInterval(function() {
     if (output.status == 1) {
-      clearInterval(interval);
-      while (!output.StdOut.AtEndOfStream) {
-        result += output.StdOut.ReadLine() + "\n";
-      }
-      document.getElementById("output").value = result;
+        clearInterval(interval);
+        while (!output.StdOut.AtEndOfStream) {
+          result += output.StdOut.ReadLine() + "\n";
+        }
+        document.getElementById("output").value += result;
       }
       }, 100);
+}
+
+function clearOutput() {
+  document.getElementById("output").value = "";
 }
